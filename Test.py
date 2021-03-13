@@ -14,17 +14,22 @@ def test_all_facts(animals, amount):
     #     a=cat_facts_data.find_facts_random_filter([i], amount)
     #     return a
     
-b=test_all_facts(animals, amount)
-users=[]
-for i in range(len(b)):
-    users.append(b[i]['user'])
+factsJson=test_all_facts(animals, amount) #получаем объект с именами авторов и их фактами и пр.
+users=[] # задаем список имен авторов
+for i in range(len(factsJson)):
+    users.append(factsJson[i]['user']) # формиркем список имен авторов
 
-uniqNames = sorted(set(users)) #remove duplicate words and sort
-d = {}    
+uniqNames = sorted(set(users)) # формиркем список уникальных имен авторов
 
+dictNames = {}    # создаем словарь который будет содержать в ключах уникальные имена авторов и количество фактов в значениях
 for name in uniqNames:
-    d[name] = users.count(name) 
+    dictNames[name] = users.count(name) 
     
-print(d)
+print(dictNames)
     
-s=list(d.items())
+s=list(dictNames.items())
+
+'''
+    Вероятно поьзователь '5a9ac18c7478810ea6c06381' и есть Kasimir Schulz. =)
+    
+'''
